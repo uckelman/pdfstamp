@@ -49,5 +49,5 @@ if [ $PNUM -ne $LASTPAGE ]; then
   POST="$SRC $((PNUM+1))-"
 fi
 
-pdfjoin -o "$DST" $PRE $SPAGE 1 $POST
+pdfjoin --rotateoversize 'false' -o "$DST" $PRE $SPAGE 1 $POST
 rm -rf $TMPDIR
