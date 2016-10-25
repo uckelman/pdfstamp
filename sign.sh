@@ -25,8 +25,8 @@ cat <<END >$TEX
 
 \\begin{document}
 
-\\begin{tikzpicture}[remember picture,overlay,shift=(current page.south west)]
-  \\node at (0,0) [anchor=south west] {\\includegraphics{${PAGE}}};
+\\begin{tikzpicture}[remember picture,overlay]
+  \\node at (current page.center) [anchor=center] {\\includegraphics{${PAGE}}};
   \\node at (${X},${Y}) [anchor=base west] {\\includegraphics[scale=${S}]{${PIC}}};
 \\end{tikzpicture}
 
