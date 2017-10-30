@@ -38,16 +38,16 @@ pdflatex -output-directory $TMPDIR $TEX
 rm -f $DST
 
 LASTPAGE=$(pdfinfo "$SRC" | grep -Po '^Pages:\s+\K\d+')
-POST=
-PRE=
+POST=()
+PRE=()
 
 if [ $PNUM -ne 1 ]; then
-  PRE="$SRC 1-$((PNUM-1))"
+  PRE=("$SRC" "1-$((PNUM-1))")
 fi
 
 if [ $PNUM -ne $LASTPAGE ]; then
-  POST="$SRC $((PNUM+1))-"
+  POST=("$SRC" "$((PNUM+1))-")
 fi
 
-pdfjoin --rotateoversize 'false' -o "$DST" $PRE $SPAGE 1 $POST
+pdfjoin --rotateoversize 'false' -o "$DST" "${PRE[@]}" $SPAGE 1 "${POST[@]}"
 rm -rf $TMPDIR
