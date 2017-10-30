@@ -36,7 +36,7 @@ END
 pdfseparate -f $PNUM -l $PNUM "$SRC" $PAGE
 pdflatex -output-directory $TMPDIR $TEX
 pdflatex -output-directory $TMPDIR $TEX
-rm -f $DST
+rm -f "$DST"
 
 LASTPAGE=$(pdfinfo "$SRC" | grep -Po '^Pages:\s+\K\d+')
 POST=()
